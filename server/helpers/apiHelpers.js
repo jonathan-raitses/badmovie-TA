@@ -9,4 +9,4 @@ const { API_KEY } = require('../../config.js');
 // https://developers.themoviedb.org/3/discover/movie-discover
 // Get your API Key and save it in your config file
 
-// Don't forget to export your functions and require them within your server file
+// Don't forget to export your functions and require them within your server file 

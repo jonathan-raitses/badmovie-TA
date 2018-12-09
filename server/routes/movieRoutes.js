@@ -7,4 +7,5 @@ router.get('/genres', movieController.getGenres)
 router.post('/save', movieController.saveMovie)
 router.delete('/delete', movieController.deleteMovie)
 
+
 module.exports = router;

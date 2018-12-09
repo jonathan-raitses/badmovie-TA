@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Search extends React.Component {
   constructor(props) {
@@ -8,6 +9,15 @@ class Search extends React.Component {
     };
   }
   getGenres() {
+    axios.get('movies/genres')
+    .then(function(arrayOfGenres) {
+      arrayOfGenres.map((genre) => {
+        this.state.genres.push(genre);
+      })
+    })
+    .catch(function(err){
+      console.log('An error: ', err);
+    })
     //make an axios request in this component to get the list of genres from your endpoint GET GENRES
   }
 

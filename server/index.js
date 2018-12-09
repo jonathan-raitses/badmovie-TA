@@ -18,14 +18,15 @@ app.use(express.static(__dirname + '/../client/dist'));
 //OPTION 1: Use regular routes
 app.get('/search', function(req, res) {
   // get the search genre     
-  axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
-  .then(function(response){
-    console.log('THIS IS THE RESPONSE', response)
-    res.send(response.data);
-  })
-  .catch(function(err){
-    console.log('new error: ', err);
-  });
+  // axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
+  // .then(function(response){
+  //   console.log('THIS IS THE RESPONSE', response)
+  //   console.l
+  //   res.send(response.data);
+  // })
+  // .catch(function(err){
+  //   console.log('new error: ', err);
+  // });
   // https://www.themoviedb.org/account/signup
 
   // use this endpoint to search for movies by genres, you will need an API key
@@ -36,6 +37,20 @@ app.get('/search', function(req, res) {
 });
 
 app.get('/genres', function(req, res) {
+  axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
+  .then(function(response){
+    console.log('THIS IS THE RESPONSE', response)
+    return (response.data.genres);
+  })
+  .then(function(obj){
+    var genres = obj.map((ele) => {
+      return ele.name
+    })
+    res.send(genres);
+  })
+  .catch(function(err){
+    console.log('new error: ', err);
+  });
   // make an axios request to get the list of official genres
   
   // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
